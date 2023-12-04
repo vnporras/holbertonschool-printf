@@ -15,8 +15,7 @@ struct convert
 {
 	char *symbol;
 	int (*function)(va_list);
-};
-typedef struct convert convert_t
+}typedef struct convert convert_t;
 
 /**
  * prototypes:

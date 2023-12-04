@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 		{"u", unsigned_integer},
 		{"b", print_binary},
 		{"r", print_reversed},
-		{NULL, NULL}
+		{NULL, NULL};
 	};
 
 	va_list arg_list;

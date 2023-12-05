@@ -1,0 +1,29 @@
+.TH MAN 3 _PRINTF _printf\ -0.1
+.SH NAME
+_printf \- 
+.SH SYNOPSIS
+.B _printf
+.RB [ \-d, i
+.IR represent an integers.
+.RB [ \-c 
+.IR represent an only char ]
+.RB [ \-s
+.IR represent a strings ]
+.RB [ \-%
+.IR Represent a converter]
+.P
+.BR "......"
+.SH DESCRIPTION
+.B _printf
+Is a function that print strings.
+.IP
+.B \-d, i
+_printf print an integers.
+.B \-c
+_printf print an only char.
+.B \-s
+_printf print a string.
+.B \-%
+_printf need % and type to print.
+.SH AUTHOR
+.B Vanessa Requejo - Nathaly Zabala

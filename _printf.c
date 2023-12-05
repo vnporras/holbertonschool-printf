@@ -1,39 +1,53 @@
 #include "main.h"
-
+#include <stdio.h>
+#include <stdarg.h>
+#include <unistd.h>
+   
 /**
  * _printf - function that produces output according to a format.
- * @format: character string
+ * @format: Is a pointer strings.
  *
- * Return - int, chars
- */
-
+ * Return - a count characters
+*/
 int _printf(const char *format, ...)
 {
-	/**
-	 * var that will count and store the number of characters printed
-	 */
-	int chars;
+				if (s == NULL)
+				{
+					write(1, "(null)", 6);
+					countCharacters += 6;
+				}
+				else
+				{
+					int sCopy = 0;
 
-	convert_t f_list[] = {
-		{"c", print_char},
-		{"s", print_string},
-		{"%", print_percent},
-		{"d", print_integer},
-		{"i", print_integer},
-		{"u", unsigned_integer},
-		{"b", print_binary},
-		{"r", print_reversed},
-		{NULL, NULL}
-	};
+					while (s[sCopy] != '\0')
+					{
+						write(1, &s[sCopy], 1);
+						sCopy++;
+						countCharacters++;
+					}
+				}
 
-	va_list arg_list;
-
-	if (format == NULL)
-		return (-1);
-
-	va_start(arg_list, format);
-
-	chars = recording_error(format, f_list, arg_list);
-	va_end(arg_list);
-	return (chars);
+				while (s[sCopy] != '\0')
+				{
+					write(1, &s[sCopy], 1);
+					sCopy++;
+					countCharacters++;
+				}
+			}
+			else if (format[formatCopy] == '%')
+			{
+				write(1, &format[formatCopy], 1);
+				countCharacters++;
+			}
+		}
+		else
+		{
+			write(1, &format[formatCopy], 1); 
+			countCharacters++;
+		}
+		formatCopy++;
+	}
+	va_end(args);
+	return (countCharacters);
 }

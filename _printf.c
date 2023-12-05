@@ -12,6 +12,7 @@ int _printf(const char *format, ...)
 {
 	int formatCopy = 0;
 	int countCharacters = 0;
+	int sCopy = 0;
 	va_list args;
 
 	va_start(args, format);
@@ -31,7 +32,21 @@ int _printf(const char *format, ...)
 			else if (format[formatCopy] == 's')
 			{
 				char *s = va_arg(args, char *);
-				int sCopy = 0;
+
+				if (s == NULL)
+				{					
+					write(1, "(null)", 6);
+					countCharacters += 6;
+				}
+				else
+				{
+					while (s[sCopy] != '\0')
+					{
+						write(1, &s[sCopy], 1);
+						sCopy++;
+						countCharacters++;
+					}
+				}
 
 				while (s[sCopy] != '\0')
 				{

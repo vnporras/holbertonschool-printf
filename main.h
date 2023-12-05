@@ -15,14 +15,14 @@ struct convert
 {
 	char *symbol;
 	int (*function)(va_list);
-};
-typedef struct convert convert_t;
+}typedef struct convert convert_t;
 
 /**
  * prototypes:
  */
 
 int _printf(const char *format, ...);
+
 int print_char(va_list);
 int print_string(va_list);
 int print_percent(va_list);

@@ -8,8 +8,7 @@
  * @format: Is a pointer strings.
  *
  * Return - a count characters
- */
-
+*/
 int _printf(const char *format, ...)
 {
 	int formatCopy = 0;

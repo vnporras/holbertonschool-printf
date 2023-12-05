@@ -30,6 +30,8 @@ int _printf(const char *format, ...)
 			}
 			else if (format[formatCopy] == 's')
 			{
+				char *s = va_arg(args, char *);
+
 				if (s == NULL)
 				{
 					write(1, "(null)", 6);

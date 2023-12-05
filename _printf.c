@@ -47,12 +47,14 @@ int _printf(const char *format, ...)
 			}
 			else if (format[formatCopy] == 'd')
 			{
-				write(1, &format[formatCopy], 1);
+				int d = va_arg(args, int);
+				write(1, &d, 1);
 				countCharacters++;
 			}
-			else if (format[formatCopy] == 'd')
+			else if (format[formatCopy] == 'i')
 			{
-				write(1, &format[formatCopy], 1);
+				int i = va_arg(args, int);
+				write(1, &i, 1);
 				countCharacters++;
 			}
 		}

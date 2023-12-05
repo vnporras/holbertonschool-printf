@@ -10,28 +10,49 @@
 */
 int _printf(const char *format, ...)
 {
-	int formatCopy;
+	int formatCopy = 0;
 	int countCharacters = 0;
 	va_list args;
 
 	va_start(args, format);
 
-	for (formatCopy = 0; format[formatCopy] != '\0'; formatCopy++)
+	while (format[formatCopy] != '\0')
 	{
-		if (format[formatCopy] == '%' && format[formatCopy] != '%')
+		if (format[formatCopy] == '%')
 		{
-			if (format[formatCopy] == 'c' || format[formatCopy] == 's')
+			formatCopy++;
+			if (format[formatCopy] == 'c')
 			{
-				char *string = (format[formatCopy] == 'c')
-					? 
-				(char[])(va_arg(args, int), '\0') : va_arg(args, char *);
-				while (*string)
-					write(1, string++, 1);
-				countCharacters += (format[formatCopy] == 'c' || *string) ? 1 : 0;
+				char c = va_arg(args, int);
+
+				write(1, &c, 1);
+				countCharacters++;
+			}
+			else if (format[formatCopy] == 's')
+			{
+				char *s = va_arg(args, char *);
+				int sCopy = 0;
+
+				while (s[sCopy] != '\0')
+				{
+					write(1, &s[sCopy], 1);
+					sCopy++;
+					countCharacters++;
+				}
 			}
 			else if (format[formatCopy] == '%')
 			{
-				write(1, '%', 1);
+				write(1, &format[formatCopy], 1);
+				countCharacters++;
+			}
+			else if (format[formatCopy] == 'd')
+			{
+				write(1, &format[formatCopy], 1);
+				countCharacters++;
+			}
+			else if (format[formatCopy] == 'd')
+			{
+				write(1, &format[formatCopy], 1);
 				countCharacters++;
 			}
 		}
@@ -40,6 +61,7 @@ int _printf(const char *format, ...)
 			write(1, &format[formatCopy], 1);
 			countCharacters++;
 		}
+		formatCopy++;
 	}
 	va_end(args);
 	return (countCharacters);

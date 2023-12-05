@@ -6,7 +6,7 @@
  * _printf - function that produces output according to a format.
  * @format: Is a pointer strings.
  *
- * Return: a count characters
+ * Return: a count characters.
 */
 int _printf(const char *format, ...)
 {
@@ -41,6 +41,16 @@ int _printf(const char *format, ...)
 				}
 			}
 			else if (format[formatCopy] == '%')
+			{
+				write(1, &format[formatCopy], 1);
+				countCharacters++;
+			}
+			else if (format[formatCopy] == 'd')
+			{
+				write(1, &format[formatCopy], 1);
+				countCharacters++;
+			}
+			else if (format[formatCopy] == 'd')
 			{
 				write(1, &format[formatCopy], 1);
 				countCharacters++;

@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	 */
 	int chars;
 
-	convert_t f_list[] = {
+	convert_t va_list[] = {
 		{"c", print_char},
 		{"s", print_string},
 		{"%", print_percent},
@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 
 	va_start(arg_list, format);
 
-	chars = recording_error(format, f_list, arg_list);
+	chars = recording_error(format, va_list, arg_list);
 	va_end(arg_list);
 	return (chars);
 }

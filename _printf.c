@@ -24,6 +24,7 @@ int _printf(const char *format, ...)
 
 				write(1, &c, 1);
 				countCharacters++;
+				i++;
 				continue;
 			}
 			if (format[i + 1] == 's')
@@ -44,12 +45,14 @@ int _printf(const char *format, ...)
 					sCopy++;
 					countCharacters++;
 				}
+				i++;
 				continue;
 			}
 			if (format[i + 1] == '%')
 			{
 				write(1, &format[i + 1], 1);
 				countCharacters++;
+				i++;
 				continue;
 			}
 			if (format[i + 1] == 'd')
@@ -57,6 +60,7 @@ int _printf(const char *format, ...)
 				int d = va_arg(args, int);
 				write(1, &d, 1);
 				countCharacters++;
+				i++;
 				continue;
 			}
 			if (format[i + 1] == 'i')
@@ -64,6 +68,7 @@ int _printf(const char *format, ...)
 				int number = va_arg(args, int);
 				write(1, &number, 1);
 				countCharacters++;
+				i++;
 				continue;
 		
 			}

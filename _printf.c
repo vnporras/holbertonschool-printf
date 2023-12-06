@@ -10,11 +10,7 @@ int _printf(const char *format, ...)
 	int i = 0;
 	int countCharacters = 0;
 	int sCopy = 0;
-<<<<<<< HEAD
   
-=======
-
->>>>>>> 2daa4bb0e1006fe0f9b0f4c524bcf3786a790c94
 	va_list args;
 
 	va_start(args, format);

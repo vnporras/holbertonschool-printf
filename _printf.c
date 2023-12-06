@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 		{
 			formatCopy++;
 
-			if (format[formatCopy] == '\0') //en caso de que solo se proporcione "%" o un solo caracter sin especificador de formato
+			if (format[formatCopy] == '\0')
 			{
 				write(1, "%", 1);
 				countCharacters++;

@@ -9,6 +9,11 @@ int _printf(const char *format, ...)
 {
 	int i = 0;
 	int countCharacters = 0;
+<<<<<<< HEAD
+=======
+	int sCopy = 0;
+  
+>>>>>>> 225985c57303bc360ab7a776f343429559fcfee8
 	va_list args;
 
 	va_start(args, format);
@@ -22,6 +27,7 @@ int _printf(const char *format, ...)
 		{
 			char c = va_arg(args, int);
 
+<<<<<<< HEAD
 			write(1, &c, 1);
 			countCharacter++;
 		}
@@ -31,6 +37,16 @@ int _printf(const char *format, ...)
 			char *s = va_arg(args, char *);
 
 			if (s == NULL)
+=======
+				write(1, &c, 1);
+				countCharacters++;
+			}
+			else if (format[formatCopy] == 's')
+			{
+				char *s = va_arg(args, char *);
+        
+				if (s == NULL)
+>>>>>>> 225985c57303bc360ab7a776f343429559fcfee8
 				{
 					s = "(null)";
 				}

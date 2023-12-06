@@ -9,7 +9,6 @@ int _printf(const char *format, ...)
 {
 	int i = 0;
 	int countCharacters = 0;
-	int sCopy = 0;
 
 	va_list args;
 
@@ -26,52 +25,33 @@ int _printf(const char *format, ...)
 			char c = va_arg(args, int);
 			
 			write(1, &c, 1);
-			countCharacter++;
+			i++;
 		}
-		else if (format[i] == 's')
+		if (format[i] == 's')
 		{	
 			int i = 0;
 			char *s = va_arg(args, char *);
 
-			if (format[formatCopy] == '\0')
-			{
-				write(1, "%", 1);
-				countCharacters++;
-				break;
-			}
-			if (format[formatCopy] == 'c')
-			{
-				char c = va_arg(args, int);
-			}
 			if (s == NULL)
 			{
-				write(1, &c, 1);
-				countCharacters++;
+				s = "(null)";
 			}
-			else if (format[formatCopy] == 's')
+			else
 			{
-				char *s = va_arg(args, char *);
-        
-				if (s == NULL)
-				{
-					s = "(null)";
-				}
-				else
-				{
-					while (s[i] != '\0')
+				while (s[i] != '\0')
 					{
 						write(1, s, 1);
 						i++;
 					}
-				}
 			}
-			else
-			{
-				write(1, &format[i], 1);
-				countCharacters++;
-			}
-			i++;
 		}
-		va_end(args);
-		return (countCharacters);
+		else
+		{
+			write(1, &format[i], 1);
+			countCharacters++;
+		}
+		i++;
 	}
+	va_end(args);
+	return (countCharacters);
+}

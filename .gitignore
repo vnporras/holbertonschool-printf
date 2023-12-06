@@ -55,3 +55,6 @@ main.c
 *.swo
 *.gch
 *.1
+*.swp
+*.swo
+

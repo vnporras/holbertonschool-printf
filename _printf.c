@@ -28,6 +28,7 @@ int _printf(const char *format, ...)
 			char c = va_arg(args, int);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			write(1, &c, 1);
 			countCharacter++;
 		}
@@ -35,6 +36,17 @@ int _printf(const char *format, ...)
 		{	
 			int i = 0;
 			char *s = va_arg(args, char *);
+=======
+			if (format[formatCopy] == '\0')
+			{
+				write(1, "%", 1);
+				countCharacters++;
+				break;
+			}
+			if (format[formatCopy] == 'c')
+			{
+				char c = va_arg(args, int);
+>>>>>>> d2c9f9b02f80511ebdd3c6417901e217713c7567
 
 			if (s == NULL)
 =======

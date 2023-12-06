@@ -9,40 +9,50 @@ int _printf(const char *format, ...)
 {
 	int i = 0;
 	int countCharacters = 0;
-
 	va_list args;
 
 	va_start(args, format);
 
-	for (; format[i] != 0; i++)
+	while (format[i] != '\0')
 	{
-		if (format[i] == '%' && format[i + 1] != '0')
+		if (format[i] == '%')
 		{
-			return (-1);
-		}
-		if (format[i] == 'c')
-		{
-			char c = va_arg(args, int);
-			
-			write(1, &c, 1);
 			i++;
-		}
-		if (format[i] == 's')
-		{	
-			int i = 0;
-			char *s = va_arg(args, char *);
+			if (format[i] == 'c')
+			{
+				char c = va_arg(args, int);
 
-			if (s == NULL)
-			{
-				s = "(null)";
+				write(1, &c, 1);
+				countCharacters++;
 			}
-			else
+			else if (format[i] == 's')
 			{
-				while (s[i] != '\0')
-					{
-						write(1, s, 1);
-						i++;
-					}
+				char *s = va_arg(args, char *);
+				int sCopy = 0;
+
+				while (s[sCopy] != '\0')
+				{
+					write(1, &s[sCopy], 1);
+					sCopy++;
+					countCharacters++;
+				}
+			}
+			else if (format[i] == '%')
+			{
+				write(1, &format[i], 1);
+				countCharacters++;
+			}
+			else if (format[i] == 'd')
+			{
+				int d = va_arg(args, int);
+				write(1, &d, 1);
+				countCharacters++;
+			}
+			else if (format[i] == 'i')
+			{
+				int i = va_arg(args, int);
+				write(1, &i, 1);
+				countCharacters++;
 			}
 		}
 		else

@@ -4,6 +4,7 @@ void print_integer(va_list args, int *countCharacters)
 {
 	int number = va_arg(args, int);
 	int count = 0;
+	int sign = 1;
 	char number_character;
 	int power = 1;
 	int temp = number;
@@ -18,7 +19,8 @@ void print_integer(va_list args, int *countCharacters)
 	if (number < 0) 
 	{
 		write(1, "-", 1);		
-		(*countCharacters)++;	
+		(*countCharacters)++;
+		sign = -1;
 		count++;			
 	   	number = -number;
 	}

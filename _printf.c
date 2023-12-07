@@ -11,8 +11,6 @@ int _printf(const char *format, ...)
 	int countCharacters = 0;
 	int sCopy = 0;
 	va_list args;
-	char number_character;
-	unsigned int result;
 
 	va_start(args, format);
 
@@ -63,44 +61,45 @@ int _printf(const char *format, ...)
 			}
 			if (format[i + 1] == 'd' || format[i + 1] == 'i')
 			{
+				unsigned int result;
 				int number = va_arg(args, int);
 				int count = 0;
 				int sign = 1;
-				unsigned int number_digit, last_digit = 0;
+				unsigned int number_digit;
+				unsigned int last_digit = 0;
 				unsigned int power;
+				char number_character;
 
-				if (number == 0)
-				{
-					write(1, "0", 1);
+				if (number == 0) {
+				write(1, "0", 1);
+				count++;
 				}
-
-				if (number < 0)
+				else
 				{
-					write(1, "-", 1);
-					sign = -1;
-					count++;
+					if (number < 0)
+					{
+					    write(1, "-", 1);
+					    sign = -1;
+					    count++;
+					}
+					result = number * sign;
+					power = 1;
+
+					while (result >= power * 10)
+					{
+						power = power * 10;
+					}
+
+					while (power != 0)
+					{
+						number_digit = (result / power);
+						last_digit = (number_digit % 10);
+						number_character = '0' + last_digit;
+						write(1, &number_character, 1);
+						count++;
+						power = power / 10;
+					}
 				}
-
-				result = number * sign;
-				power = 1;
-
-				while (result / power)
-				{
-					power = power * 10;
-				}
-
-				power = power / 10;
-
-				while (power != 0)
-				{
-					number_digit = (result / power);
-					last_digit = (number_digit % 10);
-					number_character = '0' + last_digit;
-					write (1, &number_character, 1);
-					count++;
-					power = power / 10;
-				}
-
 				countCharacters += count;
 				i++;
 				continue;

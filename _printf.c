@@ -80,7 +80,9 @@ int _printf(const char *format, ...)
 					count++;
 				}
 
-				unsigned int result = number * sign;
+				unsigned int result;
+				
+				result = number * sign;
 				power = 1;
 
 				while (result / power)

@@ -61,13 +61,13 @@ int _printf(const char *format, ...)
 			}
 			if (format[i + 1] == 'd' || format[i + 1] == 'i')
 			{
-				unsigned int result;
+				long int result;
 				int number = va_arg(args, int);
 				int count = 0;
 				int sign = 1;
-				unsigned int number_digit;
-				unsigned int last_digit = 0;
-				unsigned int power;
+				long int number_digit;
+				long int last_digit = 0;
+				long int power;
 				char number_character;
 
 				if (number == 0) {

@@ -16,30 +16,13 @@ int _printf(const char *format, ...)
 
 	for (; format != NULL && format[i] != '\0'; i++)
 	{
-		if (format[i] == '%' && format[i + 1] != '\0')
+		if (format[i] == '%')
 		{
-			if (format[i + 1] == 'c')
+			if (format[i + 1] != '\0')
 			{
-				print_char(args, &countCharacters);
-				i++;
-				continue;
-			}
-			if (format[i + 1] == 's')
-			{
-				print_string(args, &countCharacters);
-				i++;
-				continue;
-			}
-			if (format[i + 1] == 'd' || format[i + 1] == 'i')
-			{
-				print_integer(args, &countCharacters);
-				i++;
-				continue;
-			}
-			if (format[i + 1] == '%')
-			{
-				write(1, &format[i + 1], 1);
-				countCharacters++;
+				print_char_or_percent(&format[i], &countCharacters, args);
+				print_string(&format[i], &countCharacters, args);
+				print_integer(&format[i], &countCharacters, args);
 				i++;
 				continue;
 			}

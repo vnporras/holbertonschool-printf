@@ -62,7 +62,7 @@ int _printf(const char *format, ...)
 			}
 			if (format[i + 1] == 'd' || format[i + 1] == 'i')
 			{
-				int number = va_arg(args, int);
+				unsigned int number = va_arg(args, unsigned int);
 				int count = 0;
 				int sign = 1;
 				int number_digit, last_digit = 0;

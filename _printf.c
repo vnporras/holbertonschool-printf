@@ -65,8 +65,8 @@ int _printf(const char *format, ...)
 				int number = va_arg(args, int);
 				int count = 0;
 				int sign = 1;
-				int number_digit, last_digit = 0;
-				unsigned int power;
+				unsigned int number_digit, last_digit = 0;
+				int power;
 
 				if (number == 0)
 				{

@@ -23,5 +23,8 @@ typedef struct convert convert_t;
  */
 
 int _printf(const char *format, ...);
+void print_char(va_list args, int *countCharacters);
+void print_string(va_list args, int *countCharacters);
+void print_integer(va_list args, int *countCharacters);
 
 #endif

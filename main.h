@@ -3,7 +3,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
-
+#include <stdlib.h>
 /**
  * struct convert - associate symbols with functions
  * @symbol: pointer to a character that contains a symbol or a string

@@ -66,7 +66,7 @@ int _printf(const char *format, ...)
 				int count = 0;
 				int sign = 1;
 				unsigned int number_digit, last_digit = 0;
-				int power;
+				unsigned int power;
 
 				if (number == 0)
 				{
@@ -80,10 +80,10 @@ int _printf(const char *format, ...)
 					count++;
 				}
 
-				number = number * sign;
+				unsigned int result = number * sign;
 				power = 1;
 
-				while (number / power)
+				while (result / power)
 				{
 					power = power * 10;
 				}
@@ -92,7 +92,7 @@ int _printf(const char *format, ...)
 
 				while (power != 0)
 				{
-					number_digit = (number / power);
+					number_digit = (result / power);
 					last_digit = (number_digit % 10);
 					number_character = '0' + last_digit;
 					write (1, &number_character, 1);

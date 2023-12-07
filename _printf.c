@@ -12,6 +12,7 @@ int _printf(const char *format, ...)
 	int sCopy = 0;
 	va_list args;
 	char number_character;
+	unsigned int result;
 
 	va_start(args, format);
 
@@ -80,8 +81,6 @@ int _printf(const char *format, ...)
 					count++;
 				}
 
-				unsigned int result;
-				
 				result = number * sign;
 				power = 1;
 

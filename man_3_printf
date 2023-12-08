@@ -3,27 +3,29 @@
 _printf \- 
 .SH SYNOPSIS
 .B _printf
+.B #include <stdio.h>
+.B int _printf(const char *format, ...);
 .RB [ \-d, i
-.IR represent an integers.
+.IR Prints integers]
 .RB [ \-c 
-.IR represent an only char ]
+.IR Printi print an only char]
 .RB [ \-s
-.IR represent a strings ]
+.IR Print a string]
 .RB [ \-%
-.IR Represent a converter]
-.P
-.BR "......"
+.IR Need the sign % in the type to print the requared]
 .SH DESCRIPTION
 .B _printf
-Is a function that print strings.
+.P
+.BR The _printf() function is used to print formatted output to the standard output stdout and it can allow formatt ing the output in numerous ways.
+.SH The conversion specifers
 .IP
 .B \-d, i
-_printf print an integers.
+The int argument is converted to signed decimal notation. The precision, if any, gives the minimum number of di    gits that must appear; if the converted value requires fewer digits, it is padded on the left with zeros. The default precision is 1. When 0 is printed with an explicit precision 0, the output is empty.
 .B \-c
-_printf print an only char.
+Print the first character of a string leading to the buffer.
 .B \-s
-_printf print a string.
+Print A string or sequence of character. print a string.
 .B \-%
-_printf need % and type to print.
+Represent a converter, if a '%' is written. No argument is converted. The complete onversion specification is '%%'.
 .SH AUTHOR
 .B Vanessa Requejo - Nathaly Zabala

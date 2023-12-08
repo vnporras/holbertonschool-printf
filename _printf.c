@@ -76,6 +76,12 @@ int _printf(const char *format, ...)
 				}
 				else
 				{
+					if (number < 0)
+					{
+					    write(1, "-", 1);
+					    sign = -1;
+					    count++;
+					}
 					result = number * sign;
 					power = 1;
 

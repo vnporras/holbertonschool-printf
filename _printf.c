@@ -14,21 +14,26 @@ int _printf(const char *format, ...)
 	va_list args;
 	va_start(args, format);
 
-	for (; format != NULL && format[i] != '\0'; i++)
+	while (*format != '\0')
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			if (format[i + 1] != '\0')
-			{
-				print_char_or_percent(&format[i], &countCharacters, args);
-				print_string(&format[i], &countCharacters, args);
-				print_integer(&format[i], &countCharacters, args);
-				i++;
-				continue;
-			}
+			i++;
+			if (format[i] == 'c')
+				print_char_or_percent(va_arg(args, int), &countCharacters);
+			if (format[i] == 's')
+				print_string(va_arg(args, char *), &countCharacters);
+			if (format[i] == 'd' || format[i] == 'i')
+				print_integer(va_arg(args, int), &countCharacters);
+			if (format[i] == '%')
+				print_char_or_percent('%', &countCharacters);
 		}
-		write(1, &format[i], 1);
-		countCharacters++;
+		else 
+		{
+			write(1, &format[i], 1);
+			countCharacters++;
+		}
+		i++;
 	}
 	va_end(args);
 	return countCharacters;

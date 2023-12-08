@@ -8,23 +8,18 @@
  * Return: void
  */
 
-void print_string(const char *format, int *countCharacters, va_list args) 
+void print_string(char *s, int *countCharacters) 
 {
-	if (format[1] == 's')
+	if (s == NULL) 
 	{
-		char *s = va_arg(args, char *);
+		write(1, "(null)", 6);
+		(*countCharacters) += 6;
+		return;
+	}
 
-		if (s == NULL) 
-		{
-			write(1, "(null)", 6);
-			(*countCharacters) += 6;
-			return;
-		}
-
-		while (*s != '\0')
-		{
-			write(1, s++, 1);
-			(*countCharacters)++;
-		}
+	while (*s != '\0')
+	{
+		write(1, s++, 1);
+		(*countCharacters)++;
 	}
 }

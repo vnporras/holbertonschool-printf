@@ -23,8 +23,8 @@ typedef struct convert convert_t;
  */
 
 int _printf(const char *format, ...);
-void print_char_or_percent(const char *format, int *countCharacters, va_list args);
-void print_string(const char *format, int *countCharacters, va_list args);
-void print_integer(const char *format, int *countCharacters, va_list args);
+void print_char_or_percent(char c, int *countCharacters);
+void print_string(char *s, int *countCharacters);
+void print_integer(int number, int *countCharacters);
 
 #endif

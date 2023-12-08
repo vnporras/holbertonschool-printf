@@ -8,19 +8,8 @@
  * Return: void
  */
 
-void print_char_or_percent(const char *format, int *countCharacters, va_list args) 
+void print_char_or_percent(char c, int *countCharacters)
 {
-	if (format[1] == 'c')
-	{
-		char c = va_arg(args, int);
-		write(1, &c, 1);
-		(*countCharacters)++;
-		continue;
-	}
-	if (format[1] == '%')
-	{
-		write(1, &format[1], 1);
-		(*countCharacters)++;
-		continue;
-	}
+	write(1, &c, 1);
+	(*countCharacters)++;
 }

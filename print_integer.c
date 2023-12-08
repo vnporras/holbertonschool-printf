@@ -1,42 +1,31 @@
 #include "main.h"
 
-void print_integer(const char *format, int *countCharacters, va_list args) 
+void print_integer(int number, int *countCharacters)
 {
-	if (format[1] == 'd' || format[1] == 'i')
-	{
-		int number = va_arg(args, int);
-		int count = 0;
-		char number_character;
-		int power = 1;
-		int temp = number;
+	char buffer[20];
+	int buffer_counter = 0;
+	int i;
 
-		if (number == 0) 
-		{			          
-			write(1, "0", 1);
-			(*countCharacters)++;
-			return;
-		}
-		if (number < 0) 
-		{
-			write(1, "-", 1);		
-			(*countCharacters)++;
-			count++;			
-	   		number = -number;
-		}
-		while (temp / 10 != 0) 
-		{	
-			temp /= 10;	
-			power *= 10;
-		}
-		while (power > 0) 
-		{
-			int digit = number / power;
-			number_character = '0' + digit;
-			write(1, &number_character, 1);
-			(*countCharacters)++;
-			number %= power;
-			power /= 10;
-			count++;
-		}
+	if (number == 0)
+	{
+		write(1, "0", 1);
+		(*countCharacters)++;
+		return;
+	}
+	if (number < 0)
+	{
+		write(1, "-", 1);
+		(*countCharacters)++;
+		number = -number;
+	}
+	while (number != 0)
+	{
+		buffer[buffer_counter++] = '0' + (number % 10);
+		number /= 10;
+	}
+	for (i = buffer_counter - 1; i >= 0; i--)
+	{
+		write(1, &buffer[i], 1);
+		(*countCharacters)++;
 	}
 }

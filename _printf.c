@@ -76,9 +76,6 @@ int _printf(const char *format, ...)
 				}
 				else
 				{
-					result = number * sign;
-					power = 1;
-
 					while (result >= power * 10)
 					{
 						power = power * 10;

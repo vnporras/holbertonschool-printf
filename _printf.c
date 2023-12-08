@@ -61,37 +61,43 @@ int _printf(const char *format, ...)
 			}
 			if (format[i + 1] == 'd' || format[i + 1] == 'i')
 			{
-				long int result;
 				int number = va_arg(args, int);
 				int count = 0;
-				int sign = 1;
 				long int number_digit;
 				long int last_digit = 0;
 				long int power;
 				char number_character;
 
-				if (number == 0) {
-				write(1, "0", 1);
-				count++;
-				}
-				else
+				if (number == 0)
 				{
-					while (result >= power * 10)
+					write(1, "0", 1);
+					countCharacters++;
+					i++;
+				 	continue;
+				}
+				while (power != 0)
+				{
+					power = power * 10;
+					count++;
+				}
+				while (count > 0)
+				{
+					power = 1;
+					number_digit = number;
+				}
+					while (number_digit > 0)
 					{
+						number_digit = number_digit / 10;
 						power = power * 10;
 					}
-
-					while (power != 0)
-					{
-						number_digit = (result / power);
-						last_digit = (number_digit % 10);
-						number_character = '0' + last_digit;
-						write(1, &number_character, 1);
-						count++;
-						power = power / 10;
-					}
+					power = power / 10;
+					last_digit = number / power;
+					number = number - (last_digit * power);
+					number_character = last_digit + '0';
+					write(1, &number_character, 1);
+					countCharacters++;
+					count--;
 				}
-				countCharacters += count;
 				i++;
 				continue;
 			}
@@ -99,9 +105,6 @@ int _printf(const char *format, ...)
 			countCharacters++;
 			continue;
 		}
-		write(1, &format[i], 1);
-		countCharacters++;
-	}
-	va_end(args);
-	return (countCharacters);
+		va_end(args);
+		return (countCharacters);
 }

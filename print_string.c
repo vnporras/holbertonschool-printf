@@ -8,18 +8,18 @@
  * Return: void
  */
 
-void print_string(char *s, int *countCharacters) 
+void print_string(va_list args, int *countCharacters) 
 {
+	char *s = va_arg(args, char *);
+
 	if (s == NULL) 
 	{
 		write(1, "(null)", 6);
 		(*countCharacters) += 6;
-		return;
 	}
-
-	while (*s != '\0')
+	for (; *s != '\0'; s++)
 	{
-		write(1, s++, 1);
+		write(1, s, 1);
 		(*countCharacters)++;
 	}
 }

@@ -3,6 +3,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <math.h>
 
 /**
  * struct convert - associate symbols with functions
@@ -11,20 +12,8 @@
  * va_list and returns an integer
  */
 
-struct convert
-{
-	char *symbol;
-	int (*function)(va_list);
-};
-typedef struct convert convert_t;
-
-/**
- * prototypes:
- */
-
 int _printf(const char *format, ...);
-void print_char_or_percent(char c, int *countCharacters);
-void print_string(char *s, int *countCharacters);
-void print_integer(int number, int *countCharacters);
-
+void print_char(va_list args, int *countCharacters);
+void print_string(va_list args, int *countCharacters);
+void print_integer(va_list args, int *countCharacters);
 #endif

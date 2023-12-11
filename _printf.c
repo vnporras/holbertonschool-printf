@@ -82,9 +82,14 @@ int _printf(const char *format, ...)
 				}
 				while (count > 0)
 				{
+					if (number < 0)
+					{
+					    write(1, "-", 1);
+					    sign = -1;
+					    count++;
+					}
+					result = number * sign;
 					power = 1;
-					number_digit = number;
-				}
 					while (number_digit > 0)
 					{
 						number_digit = number_digit / 10;

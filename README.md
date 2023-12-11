@@ -16,5 +16,3 @@ printf ( "formatted_string", arguments_list);
 * c - Represent chars, reads a single character.
 * s - Represent a string or sequence of character.
 * % - Represent a converter, if a '%' is written.  No argument is converted.  The complete onversion specification is '%%'. it need a type.
-
-!![WhatsApp Image 2023-12-10 at 8 32 43 PM](https://github.com/vnporras/holbertonschool-printf/assets/79481309/43d70c7b-a24c-4242-99f7-589feacbb98f)

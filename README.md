@@ -16,3 +16,6 @@ printf ( "formatted_string", arguments_list);
 * c - Represent chars, reads a single character.
 * s - Represent a string or sequence of character.
 * % - Represent a converter, if a '%' is written.  No argument is converted.  The complete onversion specification is '%%'. it need a type.
+
+  
+![_prinfflow drawio](https://github.com/vnporras/holbertonschool-printf/assets/140103362/396bcb99-912f-4dd9-a591-b2025f682cf4)
